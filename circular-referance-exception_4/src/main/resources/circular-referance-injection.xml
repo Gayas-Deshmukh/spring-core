@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <bean class="com.circular.referance.exception.CustomerBean" id="customerBean_id">
+    <!-- Setter Injection -->
+    <!--   
+        <property name="customerId" value="123"></property>
+        <property name="customerName" value="Sumit"></property> 
+     -->
+     <!-- Constructor Injection  -->
+     <constructor-arg name="customerId">
+        <value>888</value>
+     </constructor-arg>
+     <constructor-arg name="customerName">
+        <value>Ramesh</value>
+     </constructor-arg>
+     <constructor-arg name="homeLoanAccount">
+        <ref bean="homeLoanAccount_id"/>
+     </constructor-arg>
+     
+    </bean>
+    
+    <bean class="com.circular.referance.exception.HomeLoanAccount"  id="homeLoanAccount_id">
+    <!-- Setter Injection -->
+    <!-- It can help us to avoid circular dependency exception by not injecting Customer dependency -->
+    <property name="homeLoanAmount" value="2000"></property>
+     
+    <!-- Constructor Injection  -->
+    <!--  
+    <constructor-arg name="homeLoanAmount" >
+        <value>555000</value>
+    </constructor-arg>
+    <constructor-arg name="customer">
+        <ref bean="customerBean_id"/>
+    </constructor-arg> 
+    -->
+    </bean>
+ 
+</beans>

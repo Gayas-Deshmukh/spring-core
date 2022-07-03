@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+        
+    <!-- Autowire by Name -->
+    <!-- Provide the name which is define in dependent bean as id or name on required bean i.e on Address 
+         it basically uses setter injection
+         
+    -->
+<!-- 
+    <bean class="com.spring.autowire.Student" autowire="byName">
+        <property name="studentId" value="222"></property>
+        <property name="studentName" value="Nitin"></property>
+    </bean>
+    <bean class="com.spring.autowire.Address" id="studentAddress">
+        <property name="addressName" value="Patoda"></property>
+        <property name="addressState" value="Maharashtra"></property>
+    </bean>
+    
+    or
+    
+    <bean class="com.spring.autowire.Address" name="studentAddress">
+        <property name="addressName" value="Patoda"></property>
+        <property name="addressState" value="Maharashtra"></property>
+    </bean>
+ 
+   -->
+   
+   
+    <!-- Autowire by type  -->
+    <!-- any name we can assign as id or name, on required bean i.e Address or it is not required to define id on required bean i.e Address 
+         basically it check for then class name define on bean in this case it will check -> "com.spring.autowire.Student".
+         it basically uses setter injection
+    -->
+    <!-- <bean class="com.spring.autowire.Student" autowire="byType">
+        <property name="studentId" value="222"></property>
+        <property name="studentName" value="Nitin"></property>
+    </bean>
+    <bean class="com.spring.autowire.Address" >
+        <property name="addressName" value="Patoda"></property>
+        <property name="addressState" value="Maharashtra"></property>
+    </bean> -->
+    
+    
+    <!-- Autowire by constructor  -->
+    
+    <!--  we need to have Constructor inside Student class to achieve this type of autowiring.
+        - it uses constructor injection.
+      -->
+    <bean class="com.spring.autowire.Student" autowire="constructor">
+        <property name="studentId" value="222"></property>
+        <property name="studentName" value="Nitin"></property>
+    </bean>
+    <bean class="com.spring.autowire.Address" >
+        <property name="addressName" value="Patoda"></property>
+        <property name="addressState" value="Maharashtra"></property>
+    </bean>
+    
+</beans>

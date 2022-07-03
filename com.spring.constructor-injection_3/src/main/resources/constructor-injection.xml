@@ -1,0 +1,78 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <bean class="com.spring.constructor.injection.Passport">
+        <!-- Dependency in the form of primitive -->     
+        <constructor-arg name="passportNO" value="2000">
+        </constructor-arg>
+        <constructor-arg name="passportType" value="Commertial">
+        </constructor-arg>
+        
+        <!-- Dependency in the form of Collection -->
+        <!-- List -->
+        <constructor-arg name="countryList">
+            <list>
+                <value>India</value>
+                <value>Japan</value>
+                <value>America</value>
+            </list>
+        </constructor-arg>
+        
+        <!-- Set -->
+        <constructor-arg name="countryCode">
+            <set>
+                <value>+91</value>
+                <value>+99</value>
+                <value>+98</value>
+            </set>
+        </constructor-arg>
+        
+        <!-- Map -->
+        <constructor-arg name="fightInfo">
+            <map>
+                <entry key="2222" value="Indian Flight"/>
+                <entry key="3333"  value="Japnies Flight"/>
+            </map>
+        </constructor-arg>
+        
+        <!-- Property -->
+        <constructor-arg name="additionalInfo">
+            <props>
+                <prop key="ADHAR_NAME">GAYAS DESHMUKH</prop>
+                <prop key="PAN_NO">ASEFEG</prop>
+            </props>
+        </constructor-arg>
+        
+        <!-- Dependency in the form of Objects -->
+        
+        <constructor-arg name="customer">
+            <ref bean="customer_id"/>
+        </constructor-arg>
+    
+    </bean>
+    
+    <bean class="com.spring.constructor.injection.Customer" id="customer_id">
+     <!-- Setter Injection -->
+	<!--<property name="customerId">
+	       <value>878787</value>
+	    </property>
+	    <property name="customerName">
+	       <value>Rahul Patil</value>
+	    </property>
+	    <property name="city">
+	       <value>Nashik</value>
+	    </property> -->
+	    
+	   <!-- Constructor Injection -->
+	  <constructor-arg name="customerId" value="66666">
+	  </constructor-arg>
+	  <constructor-arg name="customerName" value="Rahul Patil">
+      </constructor-arg>
+      <constructor-arg name="city" value="Pune">
+      </constructor-arg>
+	    
+    </bean>
+ 
+</beans>

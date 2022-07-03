@@ -1,0 +1,67 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <bean class="com.spring.setter.Passport">
+    <!-- Dependency in the form of primitive -->
+        <property name="passportNO">
+            <value>123</value>
+        </property>
+        <property name="passportType">
+            <value>Domestic</value>
+        </property>
+     
+    <!-- Dependency in the form of Collection -->
+     <!-- List -->
+     <property name="countryList">
+        <list>
+            <value>India</value>
+            <value>America</value>
+            <value>China</value>
+        </list>
+     </property>
+     
+    <!-- Set -->
+    <property name="countryCode">
+        <set>
+            <value>+91</value>
+            <value>+92</value>
+            <value>+93</value>
+        </set>
+    </property>
+    
+    <!-- Map -->
+    <property name="fightInfo">
+        <map>
+            <entry key="111" value="IndianFlight"/>
+            <entry key="222" value="AmericalFlight"/>
+        </map>
+    </property>
+    
+    <!-- Properties -->
+    <property name="additionalInfo">
+        <props>
+            <prop key="SecurityCode">AWWOO</prop>
+            <prop key="FightStationCode">QWASW</prop>
+        </props>
+    </property>
+    
+    <!-- Dependency in the form of Objects -->
+    <property name="customer" ref="customer_id"></property> <!-- We need to define reference of required object th'r Id  -->
+         
+ </bean>
+ 
+ <bean class="com.spring.setter.Cutomer" id="customer_id">
+    <property name="customerId">
+       <value>1784775</value>
+    </property>
+    <property name="customerName">
+       <value>Gayas Deshmukh</value>
+    </property>
+    <property name="city">
+       <value>Yeola</value>
+    </property>
+ </bean>
+ 
+</beans>

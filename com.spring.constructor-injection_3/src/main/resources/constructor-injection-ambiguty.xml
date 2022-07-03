@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <!-- Ambiguity Problem in constructor injection  -->
+    <!--
+    - if we have multiple constructors inside the same class then 
+      in case of constructor injection by default first constructor will get called.
+    - but for the same case if we also have string type constructor then this string type constructor 
+      will get called irrespective to other constructor call. (because spring ioc container consider the passed parameters as a string type)
+    - if we want to call specific type of constructor then we can define type attribute on <constructor-arg/> tag 
+    - we can change passed parameter sequence using index attribute on <constructor-arg/> tag 
+    - index always start from 0.
+    -->
+    <bean class="com.spring.constructor.injection.ambiguty.problem.Addition">
+        <constructor-arg value="12" type="double"  index="1" />
+        <constructor-arg value="48" type="double"  index="0" />
+        
+    </bean>
+ 
+</beans>
