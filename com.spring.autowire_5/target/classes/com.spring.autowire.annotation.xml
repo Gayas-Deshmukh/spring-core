@@ -11,9 +11,17 @@
   
    <bean class="com.spring.autowire.annotation.Student" />
    
-   <bean class="com.spring.autowire.annotation.Address" id="studentAddress">
+   <bean class="com.spring.autowire.annotation.Address" name="studentAddress1">
         <property name="addressName" value="Patoda"></property>
         <property name="addressState" value="Maharashtra"></property>
-    </bean>
+   </bean>
+   
+ <!--   
+    use for  @Qualifier
+   <bean class="com.spring.autowire.annotation.Address" name="studentAddress2">
+        <property name="addressName" value="Bangluru"></property>
+        <property name="addressState" value="Karnataka"></property>
+   </bean>
+     -->
        
 </beans>

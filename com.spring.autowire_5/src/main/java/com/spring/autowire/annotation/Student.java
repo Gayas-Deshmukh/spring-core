@@ -1,13 +1,19 @@
 package com.spring.autowire.annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Student
 {
     private int studentId;
     private String studentName;
     
+    /*
+     *  if we have multiple beans of same type & for Autowire if we request for such beans then we will get an exception
+     *  so to get specific bean for autowire or any other purpose we can use  '@Qualifier' annotation where we can define requested bean name
+     */
     @Autowired
+  //  @Qualifier(value = "studentAddress2")  // we can use this annotation at class level as well
     private Address studentAddress;
     
     public int getStudentId()
