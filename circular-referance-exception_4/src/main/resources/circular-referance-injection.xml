@@ -5,12 +5,14 @@
         
     <bean class="com.circular.referance.exception.CustomerBean" id="customerBean_id">
     <!-- Setter Injection -->
-    <!--   
+      
         <property name="customerId" value="123"></property>
         <property name="customerName" value="Sumit"></property> 
-     -->
+        <property name="homeLoanAccount" ref="homeLoanAccount_id"></property>
+        
+    
      <!-- Constructor Injection  -->
-     <constructor-arg name="customerId">
+    <!--  <constructor-arg name="customerId">
         <value>888</value>
      </constructor-arg>
      <constructor-arg name="customerName">
@@ -18,14 +20,15 @@
      </constructor-arg>
      <constructor-arg name="homeLoanAccount">
         <ref bean="homeLoanAccount_id"/>
-     </constructor-arg>
+     </constructor-arg> -->
      
     </bean>
     
     <bean class="com.circular.referance.exception.HomeLoanAccount"  id="homeLoanAccount_id">
     <!-- Setter Injection -->
-    <!-- It can help us to avoid circular dependency exception by not injecting Customer dependency -->
     <property name="homeLoanAmount" value="2000"></property>
+    <property name="customer" ref="customerBean_id"></property>
+    
      
     <!-- Constructor Injection  -->
     <!--  
