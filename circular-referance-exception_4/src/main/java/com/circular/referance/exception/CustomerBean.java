@@ -6,8 +6,8 @@ public class CustomerBean
     private String          customerName;
     private HomeLoanAccount homeLoanAccount;
   
-    // Setter Injection - Achived partial dependencies
-    /*
+    // Setter Injection - Achieved partial dependencies
+    
     public String getCustomerId()
     {
         return customerId;
@@ -32,8 +32,9 @@ public class CustomerBean
     {
         this.homeLoanAccount = homeLoanAccount;
     }
-    */
     
+    
+    /*
     // Constructor Injection
     public CustomerBean(String customerId, String customerName, HomeLoanAccount homeLoanAccount)
     {
@@ -43,12 +44,13 @@ public class CustomerBean
         this.customerName = customerName;
         this.homeLoanAccount = homeLoanAccount;
     }
+    */
     
-    
+    /*
     @Override
     public String toString()
     {
         return "CustomerBean [customerId=" + customerId + ", customerName=" + customerName + ", homeLoanAccount=" + homeLoanAccount + "]";
     }
- 
+     */
 }

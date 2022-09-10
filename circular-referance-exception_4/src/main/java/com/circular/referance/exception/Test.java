@@ -17,12 +17,15 @@ public class Test
         CustomerBean  customer  =   factory.getBean(CustomerBean.class);
         
         System.out.println("CutomerBeanObject: " + customer);
+        System.out.println("HomeLoanAccount in CustomerBean: " + customer.getHomeLoanAccount());
         
         System.out.println("----------------------------------------------------------");
         
         HomeLoanAccount account =   factory.getBean(HomeLoanAccount.class);
         
         System.out.println("HomeLoanAccountObject : " + account );
+        System.out.println("CustomerBean in HomeLoan Account : " + account.getCustomer() );
+
 
     }
 

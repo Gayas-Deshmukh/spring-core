@@ -36,10 +36,11 @@ public class HomeLoanAccount
     }  
     */
     
+    /*
     @Override
     public String toString()
     {
         return "HomeLoanAccount [homeLoanAmount=" + homeLoanAmount + ", customer=" + customer + "]";
     }
- 
+   */
 }
