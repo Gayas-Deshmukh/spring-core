@@ -24,7 +24,7 @@ public class Product implements Serializable, InitializingBean, DisposableBean
     {
         super();
        System.out.println("Product constructor get called");
-    }
+    } 
 
     @Override
     public String toString()
