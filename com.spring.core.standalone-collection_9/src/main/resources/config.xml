@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/util
+    	http://www.springframework.org/schema/util/spring-util.xsd">
+   <!-- 
+   	Note : 
+     - if we want to use any particular type of collection object at multiple places 
+       then we can use this approach.
+     - with this approach we can able to use specific type of object Like in List we can able to use ArrayList
+       ,LinkedList, Vector etc.
+    -->
+    
+    <!--  StandAlone List -->
+    
+     <util:list list-class="java.util.ArrayList" id="fds">
+           <!-- OR -->
+     <!-- <util:list list-class="java.util.LinkedList" id="fds"> -->
+          <!--  OR -->
+     <!-- <util:list list-class="java.util.Vector" id="fds"> -->
+		<value>Gayas</value>
+		<value>Raju</value>
+		<value>Nitin</value>
+		<value>Amol</value>
+     </util:list>
+     
+     <!--  StandAlone Map -->
+     <util:map map-class="java.util.HashMap" id="courses">
+     	<entry key="Spring" value="8000"></entry>
+     	<entry key="Java" value="6000"></entry>
+     </util:map>
+     
+    <bean class="com.spring.core.standalone.collection.Student">
+       <!--  <property name="friends"  ref="fds"/> -->
+       
+       <!--       OR -->
+        <property name="friends"> 
+         	<ref bean="fds"/>
+        </property>
+        
+ 		<property name="courses"  ref="courses"/>
+    </bean>
+        
+</beans>
