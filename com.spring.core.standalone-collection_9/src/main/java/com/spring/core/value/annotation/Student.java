@@ -22,6 +22,7 @@ public class Student
 	@Value("#{fds}")
 	private List friends;
 	
+	// Example Of Spring Expression Language (SpEL)
 	// Assigning value by calling static method
 	@Value("#{T(java.lang.Math).sqrt(25)}")
 	private double sqaureRoot;
