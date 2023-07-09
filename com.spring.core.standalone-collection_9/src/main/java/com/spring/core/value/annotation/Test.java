@@ -12,6 +12,7 @@ public class Test
 		
 		Student student	= context.getBean(Student.class);
 		
-		System.out.println(student); // Student [Name=Gayas, city=Nashik, friends=[Gayas, Raju, Nitin, Amol]]
+		System.out.println(student); //Student [Name=Gayas, city=Nashik, friends=[Gayas, Raju, Nitin, Amol], sqaureRoot=5.0, pi=3.141592653589793, lastName=Deshmukh]
+
 	}
 }

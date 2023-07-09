@@ -22,6 +22,18 @@ public class Student
 	@Value("#{fds}")
 	private List friends;
 	
+	// Assigning value by calling static method
+	@Value("#{T(java.lang.Math).sqrt(25)}")
+	private double sqaureRoot;
+	
+	// Assigning value by accessing static variable
+	@Value("#{T(java.lang.Math).PI}")
+	private double pi;
+	
+	// Assigning object reference variable
+	@Value("#{new java.lang.String('Deshmukh')}")
+	private String lastName;
+	
 	public String getName()
 	{
 		return Name;
@@ -50,13 +62,12 @@ public class Student
 	{
 		this.friends = friends;
 	}
-	
+
 	@Override
-	public String toString() 
-	{
-		return "Student [Name=" + Name + ", city=" + city + ", friends=" + friends + "]";
+	public String toString() {
+		return "Student [Name=" + Name + ", city=" + city + ", friends=" + friends + ", sqaureRoot=" + sqaureRoot
+				+ ", pi=" + pi + ", lastName=" + lastName + "]";
 	}
-	
 	
 	
 }
