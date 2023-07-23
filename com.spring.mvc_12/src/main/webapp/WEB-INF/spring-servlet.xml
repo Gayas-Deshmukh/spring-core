@@ -15,7 +15,7 @@
    <mvc:resources location="/WEB-INF/resources/" mapping="/src/**"/>
    <mvc:annotation-driven/><!-- Used to enable MVC Which is annotation driven -->
    		
-   <context:component-scan base-package="com.spring.mvc.controller" />
+   <context:component-scan base-package="com.spring.mvc.controller, com.spring.exception" />
    <!--  
     1. ViewResolver to resolve View
     2. Keep this file name same as Dispatcher Servlet name(web.xml -> <servlet-name>spring</servlet-name>)

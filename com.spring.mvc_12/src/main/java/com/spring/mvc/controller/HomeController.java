@@ -273,8 +273,8 @@ public class HomeController
 			System.out.println("Name : " + userName);
 			
 			// Trying to Generate Exception
-			// userName.charAt(10);         -> http://localhost:8080/springmvc/user/3/sddd -> throw Generic Exception
-			// Integer.parseInt(userName);  -> http://localhost:8080/springmvc/user/3/sddd -> throw Number Format Exception
+			// userName.charAt(10);        // -> http://localhost:8080/springmvc/user/3/sddd -> throw Generic Exception
+			 Integer.parseInt(userName);   //-> http://localhost:8080/springmvc/user/3/sddd -> throw Number Format Exception
 			
 			return "home";
 		}
@@ -297,7 +297,7 @@ public class HomeController
 		 * 2. We can also pass httpStatus when we are deal with Rest API
 		 * Test @RequestMapping("user/{id}/{name}")
 		 */
-		
+/*		
 		//Specific Exception Handler
 		@ResponseStatus(value = HttpStatus.BAD_GATEWAY)
 		@ExceptionHandler(value = NullPointerException.class)
@@ -324,6 +324,6 @@ public class HomeController
 			model.addAttribute("exp", "Generic Exception");
 			return "exception_handler";
 		}
-
+*/
 
 }
