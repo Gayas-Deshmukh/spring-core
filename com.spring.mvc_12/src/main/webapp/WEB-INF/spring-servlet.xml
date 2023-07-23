@@ -9,7 +9,9 @@
     	http://www.springframework.org/schema/context/spring-context.xsd
     	http://www.springframework.org/schema/mvc
     	http://www.springframework.org/schema/mvc/spring-mvc.xsd"> <!-- added for to be able to access resources  -->
-   
+ 
+ 
+   <!-- Below entries are needed to access the recourses  -->
    <mvc:resources location="/WEB-INF/resources/" mapping="/src/**"/>
    <mvc:annotation-driven/><!-- Used to enable MVC Which is annotation driven -->
    		
@@ -27,6 +29,9 @@
     	<property name="prefix" value="/WEB-INF/views/"></property>
     	<property name="suffix" value=".jsp"></property>
     </bean>
+    
+    <!-- Below bean is required to Upload the File  -->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"></bean>
     	
 </beans>
 <!-- index -->

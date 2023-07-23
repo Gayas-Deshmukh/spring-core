@@ -1,12 +1,21 @@
 package com.spring.mvc.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -202,5 +211,51 @@ public class HomeController
 		
 		return "contact_success";
 	}
+
+/*****************************************************************************************/
 	
+	 // File Upload
+	
+		@RequestMapping(path = "/file-upload")
+		public String uploadFile()
+		{
+			return "fileUpload";
+		}
+		
+		@RequestMapping(path = "/get-file", method = RequestMethod.POST)
+		public String fileAccess(@RequestParam(name="profile") CommonsMultipartFile file, HttpSession session, Model model)
+		{
+			System.out.println("File Size : " +  file.getSize());
+			System.out.println("File Name : " +  file.getOriginalFilename());
+			System.out.println("File Content Type : " +  file.getContentType());
+
+			// File data
+			byte [] fileData = file.getBytes();
+			
+			// Retrivining file path using session		
+			String realPath = session.getServletContext().getRealPath("/") + "WEB-INF" + File.separator + "resources" +
+			File.separator + "images" + File.separator + file.getOriginalFilename() ;
+			
+			System.out.println("File Path : " + realPath);
+
+			//saving file on server
+			
+			try 
+			{
+				FileOutputStream outPutStream	= new FileOutputStream(realPath);
+				
+				outPutStream.write(fileData);	
+				
+				System.out.println("File Uploaded SuccessFully...");
+				
+				model.addAttribute("fileName", file.getOriginalFilename());
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+				System.out.println("Error while Uploading File");
+			}
+				
+			return "uploaded_file";
+		}
 }

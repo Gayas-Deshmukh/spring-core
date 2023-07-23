@@ -7,9 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<link href="<c:url value="/src/css/background.css"/>" rel="stylesheet">
-<link href="<c:url value="/src/css/bootstrap.min.css"/>"
-	rel="stylesheet">
+<link href="<c:url value="/src/css/background.css"/>" 	rel="stylesheet"><!-- 1 way to access resources   -->
+<link href="/springmvc/src/css/bootstrap.min.css" 		rel="stylesheet"> <!-- 2 way to access resources , /context-path/location defined in spring xml/css/filename  -->
 
 <%-- <script type="text/javascript" src="<c:url value="src/js/alert.js"/> "></script> --%>
 
