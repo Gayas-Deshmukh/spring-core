@@ -1,20 +1,22 @@
 package com.spring.mvc.controller;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -38,6 +40,8 @@ public class HomeController
 		model.addAttribute("Athor", "Durgesh");
 	}
 	
+/*****************************************************************************************/
+
 	@RequestMapping(path = {"/", "/home"})
 	public String getHome(Model model)
 	{
@@ -258,4 +262,68 @@ public class HomeController
 				
 			return "uploaded_file";
 		}
+		
+/*****************************************************************************************/
+		
+		// PathVariable annotation
+		@RequestMapping("user/{id}/{name}")
+		public String gethome(@PathVariable("id") int userId, @PathVariable("name") String userName)
+		{
+			System.out.println("Id : " + userId);
+			System.out.println("Name : " + userName);
+			
+			// Trying to Generate Exception
+			// userName.charAt(10);         -> http://localhost:8080/springmvc/user/3/sddd -> throw Generic Exception
+			// Integer.parseInt(userName);  -> http://localhost:8080/springmvc/user/3/sddd -> throw Number Format Exception
+			
+			return "home";
+		}
+		
+/*****************************************************************************************/
+		
+		// RequestParam annotation
+		// http://localhost:8080/springmvc/book?id=5&&name=java
+		@RequestMapping(path="/book", method = RequestMethod.GET)
+		public String gethome(@RequestParam("id") String userId)
+		{
+			System.out.println("Id : " + userId);
+			return "home";
+		}
+		
+/*****************************************************************************************/
+		// Exception handler
+		/* 1. Whenever there is any exception occurred in this controller then below Exception handler will handle those exception
+		 *    based on type of exception.
+		 * 2. We can also pass httpStatus when we are deal with Rest API
+		 * Test @RequestMapping("user/{id}/{name}")
+		 */
+		
+		//Specific Exception Handler
+		@ResponseStatus(value = HttpStatus.BAD_GATEWAY)
+		@ExceptionHandler(value = NullPointerException.class)
+		public String handleNullPointerException(Model model)
+		{
+			model.addAttribute("exp", "Null Pointer Exception");
+			return "exception_handler";
+		}
+		
+		@ResponseStatus(value = HttpStatus.BAD_GATEWAY)
+		@ExceptionHandler(value = NumberFormatException.class)
+		public String handleNumberFormateException(Model model)
+		{
+			model.addAttribute("exp", "Number Format Exception");
+			return "exception_handler";
+		}
+		
+		//Generic Exception Handler
+		@ResponseStatus(value = HttpStatus.BAD_GATEWAY)
+	//	@ExceptionHandler(value = {NullPointerException.class, ArrayIndexOutOfBoundsException.class}) // we can create one handler to handle multiple exceptions
+		@ExceptionHandler(value = Exception.class)
+		public String handleGenericException(Model model)
+		{
+			model.addAttribute("exp", "Generic Exception");
+			return "exception_handler";
+		}
+
+
 }
